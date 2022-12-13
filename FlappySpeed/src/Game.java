@@ -1,4 +1,5 @@
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class Game {
@@ -10,9 +11,9 @@ public class Game {
     private int pauseDelay;
     private int restartDelay;
     private int pipeDelay;
-
+    public int highScore = 0;
     private Speed speed;
-    private ArrayList<PipeMessi> pipes;
+    private ArrayList<PipeMessi> pipeMessis;
     private Keyboard keyboard;
 
     public int score;
@@ -35,12 +36,11 @@ public class Game {
         pipeDelay = 0;
 
         speed = new Speed();
-        pipes = new ArrayList<PipeMessi>();
+        pipeMessis = new ArrayList<PipeMessi>();
     }
 
     public void update() {
         watchForStart();
-
         if (!started)
             return;
 
@@ -55,17 +55,20 @@ public class Game {
         if (gameover)
             return;
 
+        movePipes();
+        checkForCollisions();
     }
 
     public ArrayList<Render> getRenders() {
         ArrayList<Render> renders = new ArrayList<Render>();
         renders.add(new Render(0, 0, "lib/background.png"));
-        for (PipeMessi pipe : pipes)
-            renders.add(pipe.getRender());
+        for (PipeMessi pipeMessi : pipeMessis)
+            renders.add(pipeMessi.getRender());
         renders.add(new Render(0, 0, "lib/foreground.png"));
         renders.add(speed.getRender());
         return renders;
     }
+
 
     private void watchForStart() {
         if (!started && keyboard.isDown(KeyEvent.VK_SPACE)) {
@@ -94,5 +97,66 @@ public class Game {
         }
     }
 
+    private void movePipes() {
+        pipeDelay--;
+
+        if (pipeDelay < 0) {
+            pipeDelay = PIPE_DELAY;
+            PipeMessi northPipeMessi = null;
+            PipeMessi southPipeMessi = null;
+
+            // Look for pipes off the screen
+            for (PipeMessi pipeMessi : pipeMessis) {
+                if (pipeMessi.x - pipeMessi.width < 0) {
+                    if (northPipeMessi == null) {
+                        northPipeMessi = pipeMessi;
+                    } else if (southPipeMessi == null) {
+                        southPipeMessi = pipeMessi;
+                        break;
+                    }
+                }
+            }
+
+            if (northPipeMessi == null) {
+                PipeMessi pipeMessi = new PipeMessi("north");
+                pipeMessis.add(pipeMessi);
+                northPipeMessi = pipeMessi;
+            } else {
+                northPipeMessi.reset();
+            }
+
+            if (southPipeMessi == null) {
+                PipeMessi pipeMessi = new PipeMessi("south");
+                pipeMessis.add(pipeMessi);
+                southPipeMessi = pipeMessi;
+            } else {
+                southPipeMessi.reset();
+            }
+
+            northPipeMessi.y = southPipeMessi.y + southPipeMessi.height + 175;
+        }
+
+        for (PipeMessi pipeMessi : pipeMessis) {
+            pipeMessi.update();
+        }
     }
 
+    private void checkForCollisions() {
+
+        for (PipeMessi pipeMessi : pipeMessis) {
+            if (pipeMessi.collides(speed.x, speed.y, speed.width, speed.height)) {
+                gameover = true;
+                speed.dead = true;
+            } else if (pipeMessi.x == speed.x && pipeMessi.orientation.equalsIgnoreCase("south")) {
+                score++;
+            }
+        }
+
+        // Ground + Bird collision
+        if (speed.y + speed.height > App.HEIGHT - 80) {
+            gameover = true;
+            speed.y = App.HEIGHT - 80 - speed.height;
+        }
+    }
+
+}

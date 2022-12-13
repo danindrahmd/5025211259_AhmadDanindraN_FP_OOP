@@ -2,8 +2,7 @@ import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.geom.AffineTransform;
 
-public class Speed {
-
+public class Speed implements finalvariable {
     public int x;
     public int y;
     public int width;
@@ -24,8 +23,6 @@ public class Speed {
         x = 100;
         y = 150;
         yvel = 0;
-        width = 45;
-        height = 32;
         gravity = 0.5;
         jumpDelay = 0;
         rotation = 0.0;

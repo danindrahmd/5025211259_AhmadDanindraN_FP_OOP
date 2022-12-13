@@ -15,6 +15,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void update() {
         game.update();
         repaint();
+
     }
 
     protected void paintComponent(Graphics g) {
