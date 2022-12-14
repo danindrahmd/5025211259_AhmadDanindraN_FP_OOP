@@ -6,7 +6,7 @@ public class PipeMessi {
     public int y;
     public int width;
     public int height;
-    public int speed = 3;
+    public float speed = 3.0F;
 
     public String orientation;
 
@@ -28,7 +28,7 @@ public class PipeMessi {
     }
 
     public void update() {
-        x -= speed;
+        x -= (int) speed;
     }
 
     public boolean collides(int _x, int _y, int _width, int _height) {
