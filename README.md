@@ -1,5 +1,7 @@
-AHMAD DANINDRA NUGROHO
-5025211259
+#5025211259_AhmadDanindraN_FP_OOP
+
+**AHMAD DANINDRA NUGROHO
+5025211259**
 
 1. Casting/Conversion
 https://github.com/danindrahmd/5025211259_AhmadDanindraN_FP_OOP/blob/b7b95c7d367fd04b56a56465e5a4dcab1178d081/FlappySpeed/src/PipeMessi.java#L9
@@ -47,3 +49,7 @@ https://github.com/danindrahmd/5025211259_AhmadDanindraN_FP_OOP/blob/b7b95c7d367
 
 15. Input Output
 https://github.com/danindrahmd/5025211259_AhmadDanindraN_FP_OOP/blob/b7b95c7d367fd04b56a56465e5a4dcab1178d081/FlappySpeed/src/Util.java#L18-L30
+
+REFERENCE
+https://github.com/topics/flappy-bird-game?l=java
+https://www.youtube.com/watch?v=I1qTZaUcFX0&ab_channel=JarytBustard
