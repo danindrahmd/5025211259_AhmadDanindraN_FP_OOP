@@ -1,20 +1,19 @@
 AHMAD DANINDRA NUGROHO
 5025211259
 
-/*
-1. Casting/Conversion -> pipemessi
-2. Constructor -> All class
-3. Overloading -> finalvariable
-4. Overriding -> Ingfo
-5. Encapsulation ->
-6. Inheritance -> Ingfo
-7. Polymorphism -> finalvariable
-8. ArrayList -> game.java
-9. Exception Handling -> game exception
-10. GUI -> app
-11. Interface -> finalvariable
-12. Abstract Class -> iniAbstract
-13. Generics -> name
-14. Collection -> hash map
-15. Input Output -> util
- */
+1. Casting/Conversion
+
+2. Constructor
+3. Overloading
+4. Overriding
+5. Encapsulation
+6. Inheritance
+7. Polymorphism
+8. ArrayList
+9. Exception Handling
+10. GUI
+11. Interface
+12. Abstract Class
+13. Generics
+14. Collection
+15. Input Output
